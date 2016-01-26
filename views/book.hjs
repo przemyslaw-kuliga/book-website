@@ -1,2 +1,6 @@
-<h2>{{ title }}</h2>
-<img src="{{ cover }}">
+{{<layout}}
+{{$content}}
+<img src="{{cover}}">
+<div>{{title}}</div>
+{{/content}}
+{{/layout}}

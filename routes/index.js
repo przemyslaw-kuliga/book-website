@@ -17,7 +17,10 @@ router.get('/', function(req, res, next) {
 
             res.render('book', {
                 title: jp.query(book, '$..title'), //book.volumeInfo.title,
-                cover: jp.query(book, '$..thumbnail') //book.volumeInfo.imageLinks.thumbnail
+                cover: jp.query(book, '$..thumbnail'), //book.volumeInfo.imageLinks.thumbnail
+                partials: {
+                    layout: 'layout'
+                }
             });
         }
     });
