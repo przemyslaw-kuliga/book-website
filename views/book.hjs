@@ -2,5 +2,6 @@
 {{$content}}
 <img src="{{cover}}">
 <div>{{title}}</div>
+<esi:include src="http://my-book-inventory.herokuapp.com/stock/123" />
 {{/content}}
 {{/layout}}
