@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
             }, function(err, html) {
                 var esi = new ESI({
                     headers: {
-                        'x-request-id': xrequestheader
+                        'x-request-id': req.headers['x-request-id']
                         }
                     });
 
