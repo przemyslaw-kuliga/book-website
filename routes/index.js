@@ -25,13 +25,13 @@ router.get('/', function(req, res, next) {
                 },
                 requestId: req.headers['x-request-id']
             }, function(err, html) {
-                var esi = new ESI({
+                var esi = new ESI();
+
+                esi.process(html, {
                     headers: {
                         'x-request-id': req.headers['x-request-id']
                         }
-                    });
-
-                esi.process(html).then(function(result) {
+                    }).then(function(result) {
                     res.send(html);
                 });
             });
