@@ -26,8 +26,8 @@ router.get('/', function(req, res, next) {
                 requestId: req.headers['x-request-id']
             }, function(err, html) {
                 var esi = new ESI();
-console.log(req.headers['x-request-id']);
-                esi.process(html, {
+
+                return esi.process(html, {
                     headers: {
                         'X-Request-ID': req.headers['x-request-id']
                     }
