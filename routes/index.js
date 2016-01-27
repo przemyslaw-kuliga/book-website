@@ -20,7 +20,8 @@ router.get('/', function(req, res, next) {
                 cover: jp.query(book, '$..thumbnail'), //book.volumeInfo.imageLinks.thumbnail
                 partials: {
                     layout: 'layout'
-                }
+                },
+                requestId: req.headers['x-request-id']
             });
         }
     });

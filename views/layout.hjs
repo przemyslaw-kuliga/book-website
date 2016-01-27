@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta x-request-id="{{requestId}}">
     </head>
     <body>
         <esi:include src="https://kwasniew.github.io/menu.html" />
