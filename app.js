@@ -28,14 +28,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 //     next();
 // });
 
-app.use(esiMiddleware({
-  onError: function(src, error) {
-      if(error.statusCode === 404) {
-          return '<!--Not found-->';
-      }
-      return '';
-  }
-}));
+// app.use(esiMiddleware({
+//   onError: function(src, error) {
+//       if(error.statusCode === 404) {
+//           return '<!--Not found-->';
+//       }
+//       return '';
+//   }
+// }));
 
 app.use('/', routes);
 app.use('/users', users);
