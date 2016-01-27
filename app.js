@@ -10,7 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
+var xrequestheader;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
@@ -23,13 +23,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+    xrequestheader = req.headers['x-request-id'];
+    next();
+});
+
 app.use(esiMiddleware({
   onError: function(src, error) {
       if(error.statusCode === 404) {
           return '<!--Not found-->';
       }
       return '';
-  }
+  },
+  headers: {
+                'x-request-id': xrequestheader
+            }
 }));
 
 app.use('/', routes);
