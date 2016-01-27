@@ -23,22 +23,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function (req, res, next) {
-    xrequestheader = req.headers['x-request-id'];
-    next();
-});
+// app.use(function (req, res, next) {
+//     xrequestheader = req.headers['x-request-id'];
+//     next();
+// });
 
-app.use(esiMiddleware({
-  onError: function(src, error) {
-      if(error.statusCode === 404) {
-          return '<!--Not found-->';
-      }
-      return '';
-  },
-  headers: {
-                'x-request-id': xrequestheader
-            }
-}));
+// app.use(esiMiddleware({
+//   onError: function(src, error) {
+//       if(error.statusCode === 404) {
+//           return '<!--Not found-->';
+//       }
+//       return '';
+//   },
+//   headers: {
+//                 'x-request-id': xrequestheader
+//             }
+// }));
 
 app.use('/', routes);
 app.use('/users', users);

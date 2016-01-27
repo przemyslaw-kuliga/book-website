@@ -5,6 +5,8 @@ var goodGuy = require('good-guy-http')({
 var jp = require('jsonpath');
 var router = express.Router();
 
+var ESI = require('nodesi');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -22,6 +24,16 @@ router.get('/', function(req, res, next) {
                     layout: 'layout'
                 },
                 requestId: req.headers['x-request-id']
+            }, function(err, html) {
+                var esi = new ESI({
+                    headers: {
+                        'x-request-id': xrequestheader
+                        }
+                    });
+
+                esi.process(html).then(function(result) {
+                    res.send(html);
+                });
             });
         }
     });
