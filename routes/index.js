@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 
                 esi.process(html, {
                     headers: {
-                        'x-request-id': req.headers['x-request-id']
+                        'X-Request-ID': req.headers['x-request-id']
                     }
                 }).then(function(result) {
                     res.send(result);
